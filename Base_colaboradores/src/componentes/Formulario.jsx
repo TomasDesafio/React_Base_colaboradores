@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
-export default function Formulario() {
+
+const Formulario = ({agregarColaborador}) => {
     const [id, setID] = useState("");
     const [nombre, setNombre] = useState("");
     const [correo, setCorreo] = useState("");
@@ -11,14 +12,14 @@ export default function Formulario() {
       // Función al enviar el formulario
     const enviarFormulario = (e) => {
     e.preventDefault();
-    //const nuevoColaborador{id,nombre,correo, cargo,telefono};
-    //const agregarColaborador{nuevoColaborador};
-    setID('')
-    setNombre('')
-    setCorreo('')
-    setCargo('')
-    setTelefono('')
-    setEdad('')
+    const nuevoColaborador = {id,nombre,correo, cargo,telefono};
+     agregarColaborador(nuevoColaborador);
+    setID('');
+    setNombre('');
+    setCorreo('');
+    setCargo('');
+    setTelefono('');
+    setEdad('');
 
 
     };
@@ -51,7 +52,7 @@ export default function Formulario() {
         </div>
         <div className="form-group">
           <label>Telefono:</label>
-          <input type="text" value={telefono} onChange={(e) => setCargo(e.target.value)} className="form-control" />
+          <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} className="form-control" />
         </div>
         <button type="submit" className='btn btn-primary' > Agregar colaborador </button>
         </form>
@@ -61,3 +62,5 @@ export default function Formulario() {
     </div>
   );
 };
+
+export default Formulario;
