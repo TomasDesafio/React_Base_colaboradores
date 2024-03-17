@@ -12,15 +12,14 @@ const Formulario = ({agregarColaborador}) => {
       // Función al enviar el formulario
     const enviarFormulario = (e) => {
     e.preventDefault();
-    const nuevoColaborador = {id,nombre,correo,edad,cargo,telefono};
+    const nuevoColaborador = {id,nombre,correo, edad, cargo, telefono};
      agregarColaborador(nuevoColaborador);
     setID('');
     setNombre('');
     setCorreo('');
-    setEdad('');
     setCargo('');
     setTelefono('');
-    
+    setEdad('');
 
 
     };
@@ -55,6 +54,7 @@ const Formulario = ({agregarColaborador}) => {
           <label>Telefono:</label>
           <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} className="form-control" />
         </div>
+        <br />
         <button type="submit" className='btn btn-primary' > Agregar colaborador </button>
         </form>
 

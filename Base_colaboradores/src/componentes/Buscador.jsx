@@ -1,21 +1,33 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useState } from 'react';
 
-export default function Buscador({buscar}) {
-    const [valor, setValor] = useState(""); 
-    
-    
-    const  handleChange = (e) => {
-        setValor(e.target.value)
-        buscar(e.target.value)
-    
-        
-    
-        };
-    return (
+function Buscador({ colaboradores, ListadoComponente }) { // Recibe ListadoComponente como prop
+  const [busqueda, setBusqueda] = useState('');
+  
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+  };
+
+  const resultados = colaboradores.filter((colaborador) =>
+    colaborador.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+    colaborador.correo.toLowerCase().includes(busqueda.toLowerCase()) ||
+    colaborador.edad.toString().toLowerCase().includes(busqueda.toLowerCase()) ||
+    colaborador.cargo.toLowerCase().includes(busqueda.toLowerCase()) ||
+    colaborador.telefono.includes(busqueda)
+  );
+
+  return (
     <div>
-        <input type="text" value={valor} onChange= {handleChange} className="form-control" />
-    
+      <h2>Buscar Colaboradores</h2>
+      <input
+        type="text"
+        value={busqueda}
+        onChange={handleChange}
+        className="form-control mb-3"
+        placeholder="Buscar..."
+      />
+      <ListadoComponente colaboradores={resultados.length > 0 ? resultados : colaboradores} /> {/* Utiliza ListadoComponente */}
     </div>
-  )
+  );
 }
+
+export default Buscador;
