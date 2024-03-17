@@ -26,10 +26,25 @@ function App() {
     }, 3000);
   };
 
+  const buscar = (palabra) => {
+    const filtrado=colaboradores.filter((colaborador)=>colaborador.nombre==palabra || colaborador.correo==palabra|| colaborador.edad==palabra || colaborador.cargo==palabra || colaborador.telefono==palabra  )
+    
+    if (filtrado.length>0){
+      setColaboradores(filtrado)
+     
+      
+    }
+    else {
+      setColaboradores(colaboradores)
+
+    }
+  };
+
+
   return (
     <>
       <div>
-      <Buscador colaboradores={colaboradores} parametros={parametros} />  
+      <Buscador  buscar={buscar} />  
       {mensaje && <Alert mensaje={mensaje} tipo={tipoMensaje} />}
         <Formulario agregarColaborador={agregarColaborador} />
         

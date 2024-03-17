@@ -1,9 +1,13 @@
 import React from 'react'
+import { useState } from "react";
 
-export default function Buscador({colaboradores,parametros}) {
+export default function Buscador({buscar}) {
     const [valor, setValor] = useState(""); 
+    
+    
     const  handleChange = (e) => {
         setValor(e.target.value)
+        buscar(e.target.value)
     
         
     

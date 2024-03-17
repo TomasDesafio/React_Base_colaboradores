@@ -12,14 +12,15 @@ const Formulario = ({agregarColaborador}) => {
       // Función al enviar el formulario
     const enviarFormulario = (e) => {
     e.preventDefault();
-    const nuevoColaborador = {id,nombre,correo, cargo,telefono};
+    const nuevoColaborador = {id,nombre,correo,edad,cargo,telefono};
      agregarColaborador(nuevoColaborador);
     setID('');
     setNombre('');
     setCorreo('');
+    setEdad('');
     setCargo('');
     setTelefono('');
-    setEdad('');
+    
 
 
     };
