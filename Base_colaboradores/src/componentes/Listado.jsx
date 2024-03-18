@@ -5,7 +5,7 @@ const Listado = ({ colaboradores }) => {
   return (
     <div>
       <h2>Listado de Colaboradores</h2>
-      <table className="table">
+      <table className="table table-dark">
         <thead>
           <tr>
             <th>Id</th>

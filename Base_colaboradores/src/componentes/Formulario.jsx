@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 
-const Formulario = ({agregarColaborador}) => {
+const Formulario = ({agregarColaborador, eliminarColaborador}) => {
     const [id, setID] = useState("");
     const [nombre, setNombre] = useState("");
     const [correo, setCorreo] = useState("");
     const [cargo, setCargo] = useState("");
     const [telefono, setTelefono] = useState("");
     const [edad, setEdad] = useState("");
+    const [idEliminar, setIdEliminar] = useState('');
 
       // Función al enviar el formulario
     const enviarFormulario = (e) => {
@@ -24,6 +25,12 @@ const Formulario = ({agregarColaborador}) => {
 
     };
       
+    const handleEliminar = () => {
+      if (idEliminar) {
+        eliminarColaborador(idEliminar);
+        setIdEliminar('');
+      }
+    };
 
   
     return (
@@ -55,13 +62,25 @@ const Formulario = ({agregarColaborador}) => {
           <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} className="form-control" />
         </div>
         <br />
+        
         <button type="submit" className='btn btn-primary' > Agregar colaborador </button>
         </form>
+        
 
-
-      
+        <div>
+        <h2>Eliminar Colaborador</h2>
+        <div className="form-group">
+          <label>ID del colaborador a eliminar:</label>
+          <input type="text" value={idEliminar} onChange={(e) => setIdEliminar(e.target.value)} className="form-control" />
+        </div>
+        <br />
+        
+        <button onClick={handleEliminar} className="btn btn-danger">Eliminar colaborador</button>
+      </div>
     </div>
   );
 };
 
 export default Formulario;
+
+      
